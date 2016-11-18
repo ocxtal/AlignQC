@@ -91,9 +91,10 @@ class FastaData:
     pos = 0
     for m in p.finditer(dat):
       self._names.append(m.group(1))
+      name = m.group(1).split(' ')[0]
       seq = m.group(2).replace("\n",'')
-      self._lengths[m.group(1)] = len(seq)
-      self._seqs[m.group(1)] = seq
+      self._lengths[name] = len(seq)
+      self._seqs[name] = seq
 
 # Do random access with an indexed Fasta File
 # Creates the index if its not there already
